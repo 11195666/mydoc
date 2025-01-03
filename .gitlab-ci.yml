@@ -1,0 +1,18 @@
+image: ruby:alpine
+
+stages:
+- deploy
+
+pages:
+  stage: deploy
+  script:
+  - cp -r docs/. public
+  - echo "deploying to pages for note"
+  environment:
+    name: note
+    url: https://xuyq123.gitlab.io/plain-docsify
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
